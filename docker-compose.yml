@@ -3,22 +3,17 @@ version: '3.8'
 services:
   server:
     build: ./server
-    container_name: serverapp
+    container_name: servapp_c
     ports:
-      - "6247:5000"
+      - "6247:6247"
     volumes:
-      - ./client:/app
+      - ./server:/app
       - ./app/node_modules
-    depends_on:
-      - client
 
   client:
     build: ./client
-    container_name: evan-on-dock
+    container_name: evanclin_c
     ports:
       - "3000:3000"
-    volumes:
-      - ./client:/app
-      - ./app/node_modules
     stdin_open: true
     tty: true
