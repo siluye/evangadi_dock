@@ -8,12 +8,17 @@ services:
       - "6247:6247"
     volumes:
       - ./server:/app
-      - ./app/node_modules
+      - /app/node_modules
 
   client:
     build: ./client
     container_name: evanclin_c
     ports:
       - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - server
     stdin_open: true
     tty: true
